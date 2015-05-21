@@ -6,11 +6,14 @@
 # 
 # Dipen Chauhan
 
-# search_files = File.join("**", "*.rb", "*.erb", "*.js", "*.css", "*.html", "*.yml", "*.txt")
+file_extensions = ["*.rb", "*.erb", "*.js", "*.css", "*.html", "*.yml", "*.txt"]
 files_list = Array.new
 
-Dir.glob("*/*") do |f|
-	files_list << f
+file_extensions.each do |ext|
+	extfiles = File.join("**", ext)
+	Dir.glob(extfiles) do |f|
+		files_list << f
+	end
 end
 
 puts files_list
