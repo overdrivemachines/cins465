@@ -16,4 +16,12 @@ file_extensions.each do |ext|
 	end
 end
 
-puts files_list
+# Sort the list
+files_list.sort!
+
+# Construct a new regular expression
+arg = ARGV[0]
+if (arg == nil)
+	arg = ""
+end
+rx = Regexp.new(arg)
