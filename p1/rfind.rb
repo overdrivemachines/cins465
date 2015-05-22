@@ -25,3 +25,11 @@ if (arg == nil)
 	arg = ""
 end
 rx = Regexp.new(arg)
+
+puts "Files with names that matches <" + arg + ">"
+puts "**************************************************"
+files_list.each do |f|
+	if (rx.match(f))
+		puts f
+	end
+end
