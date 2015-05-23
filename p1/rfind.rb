@@ -36,17 +36,16 @@ end
 rx = Regexp.new(arg)
 
 puts "Files with names that matches <" + arg + ">"
-puts "**************************************************"
 files_list.each do |f|
 	if (rx.match(f))
-		puts "./" + f
+		puts "  ./" + f
 	end
 end
+puts "**************************************************"
 
 # Find string in the file
 # http://stackoverflow.com/questions/10832440/ruby-find-string-in-file-and-print-result
 puts "Files with content that matches <" + arg + ">"
-puts "**************************************************"
 printing_first_file_results = true
 files_list.each do |filename|
 	line_number = 1
