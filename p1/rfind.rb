@@ -33,7 +33,7 @@ arg = ARGV[0]
 if (arg == nil)
 	arg = ""
 end
-rx = Regexp.new(arg)
+rx = Regexp.new(arg, Regexp::IGNORECASE)
 
 puts "Files with names that matches <" + arg + ">"
 files_list.each do |f|
