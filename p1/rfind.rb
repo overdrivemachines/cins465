@@ -5,6 +5,15 @@
 # Summer 2015
 # 
 # Dipen Chauhan
+# 
+# Useful Links:
+# 	1) Ruby find string in file and print result
+# 		http://stackoverflow.com/questions/10832440/ruby-find-string-in-file-and-print-result
+# 	2) How to open a file and search for a word?
+# 		http://stackoverflow.com/questions/1896555/how-to-open-a-file-and-search-for-a-word
+# 	3) Finding lines in a text file matching a regular expression
+# 		http://stackoverflow.com/questions/6002868/finding-lines-in-a-text-file-matching-a-regular-expression
+# 	
 
 file_extensions = ["*.rb", "*.erb", "*.js", "*.css", "*.html", "*.yml", "*.txt"]
 files_list = Array.new
@@ -34,8 +43,11 @@ files_list.each do |f|
 	end
 end
 
+# Find string in the file
+# http://stackoverflow.com/questions/10832440/ruby-find-string-in-file-and-print-result
 puts "Files with content that matches <" + arg + ">"
 puts "**************************************************"
+printing_first_file_results = true
 files_list.each do |filename|
 	line_number = 1
 	printed_file_name = false
@@ -43,7 +55,11 @@ files_list.each do |filename|
 		f.each_line do |line|
 			if line =~ rx
 				if printed_file_name == false
-					puts "--------------------------------------------------"
+					if printing_first_file_results == false
+						puts "--------------------------------------------------"
+					else
+						printing_first_file_results = false
+					end					
 					puts "./" + filename
 					printed_file_name = true
 				end
