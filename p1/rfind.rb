@@ -30,6 +30,26 @@ puts "Files with names that matches <" + arg + ">"
 puts "**************************************************"
 files_list.each do |f|
 	if (rx.match(f))
-		puts f
+		puts "./" + f
+	end
+end
+
+puts "Files with content that matches <" + arg + ">"
+puts "**************************************************"
+files_list.each do |filename|
+	line_number = 1
+	printed_file_name = false
+	File.open(filename) do |f|
+		f.each_line do |line|
+			if line =~ rx
+				if printed_file_name == false
+					puts "--------------------------------------------------"
+					puts "./" + filename
+					printed_file_name = true
+				end
+				puts "  " + line_number.to_s + ":" + line
+			end
+			line_number += 1
+		end
 	end
 end
