@@ -32,6 +32,46 @@ def play
 		letter = gets.chomp
 	end
 
+	# Check for hit or miss
+	if (hit?(letter) == true)
+		puts "hit"
+	else
+		puts "miss"
+	end
+end
+
+# Returns true when letter matches with one of the letters of 
+# the selected word in the array
+def hit?(letter)
+	
+	# Check number of occurences of the letter in the array
+	matches = 0
+	rx = Regexp.new(letter)
+	$words.each do |word|
+		if (rx.match(word) != nil)
+			matches += 1
+		end
+	end
+
+	if ((matches > 1) || (matches == 0))
+		# Remove all the words from the array
+		# that contain letter
+		$words.each do |word|
+			if (rx.match(word) != nil)
+				$words.delete(word)
+			end
+		end
+		return false
+	else
+		# Remove all words from the array that
+		# do not match
+		$words.each do |word|
+			if (rx.match(word) == nil)
+				$words.delete(word)
+			end
+		end
+		return true
+	end
 end
 
 def draw
