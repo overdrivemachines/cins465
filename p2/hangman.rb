@@ -6,3 +6,15 @@
 # 
 # Dipen Chauhan
 # 
+
+$word_size = 5
+
+puts "+-------------+"
+puts "|   HANGMAN   |"
+puts "+-------------+"
+print "Enter word length between 5-20: "
+$word_size = gets.chomp.to_i
+if (($word_size < 5) || ($word_size > 20))
+	$word_size = 5
+end
+puts "word size = " + $word_size.to_s
