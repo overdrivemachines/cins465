@@ -64,7 +64,8 @@ def hit?(letter)
 	if ((matches > 1) || (matches == 0))
 		# Remove all the words from the array
 		# that contain the letter
-		removeWords(rx)
+		$words.delete_if {|word| word =~ rx}
+		# removeWords(rx)
 		# matches = 0
 		# $words.each do |word|
 		# 	if ((rx =~ word) != nil)
@@ -96,30 +97,6 @@ def hit?(letter)
 	end
 end
 
-def removeWords(expression = Regexp.new(""))
-	matches = 0
-	for i in 0..$words.size
-		word = $words[i]
-		if ((expression =~ word) != nil)
-			matches += 1
-			$words[i] = "0"
-		end
-	end
-	$words.delete("0")
-	puts "Number of words removed = " + matches.to_s
-	
-	matches = 0
-	
-	$words.each do |word|
-		if ((expression =~ word) != nil)
-			matches += 1
-		end
-	end
-
-	if (matches > 0)
-		removeWords(expression)
-	end
-end
 
 def draw
 
