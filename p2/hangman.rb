@@ -24,7 +24,8 @@ def play
 	end
 
 	while (true) do
-		# Ask user to input guess
+
+		# Ask user to input their guess
 		print "Enter your guess: "
 		letter = gets.chomp
 		rx = Regexp.new("^[a-z]$")	
@@ -33,13 +34,17 @@ def play
 			letter = gets.chomp
 		end
 
-		# puts "# of words = " + $words.size.to_s
+
 		# Check for hit or miss
 		if (hit?(letter) == true)
-			print "Hit. "
+			letters_right << letter
+			puts "Hit"
 		else
-			print "Miss. "
+			letters_wrong << letter
+			puts "Miss"
 		end
+		puts "Letters Right: " + letters_right.inspect.to_s
+		puts "Letters Wrong: " + letters_wrong.inspect.to_s
 		puts "# of words in Array = " + $words.size.to_s
 	end
 
@@ -61,19 +66,19 @@ def hit?(letter)
 
 	puts matches.to_s + " words contain the letter " + letter + ". Removing them.."
 
-	if ((matches > 1) || (matches == 0))
+	if (matches == 1)
+		# Remove all words from the array that
+		# do not match
+		$words.each do |word|
+			if (rx.match(word) == nil)
+				$words.delete(word)
+			end
+		end
+		return true
+	else
 		# Remove all the words from the array
 		# that contain the letter
 		$words.delete_if {|word| word =~ rx}
-		# removeWords(rx)
-		# matches = 0
-		# $words.each do |word|
-		# 	if ((rx =~ word) != nil)
-		# 		$words.delete(word)
-		# 		matches += 1
-		# 	end
-		# end
-		# puts "Removed " + matches.to_s + " words."
 
 		matches = 0
 		rx = Regexp.new(letter)
@@ -85,15 +90,6 @@ def hit?(letter)
 		end
 		puts matches.to_s + " words contain the letter " + letter
 		return false
-	else
-		# Remove all words from the array that
-		# do not match
-		$words.each do |word|
-			if (rx.match(word) == nil)
-				$words.delete(word)
-			end
-		end
-		return true
 	end
 end
 
