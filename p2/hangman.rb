@@ -37,6 +37,7 @@ def play
 		# Check if letter was already inputted previously
 		letter_repeated = false
 		
+		
 		while (letter_repeated) do
 
 		end
