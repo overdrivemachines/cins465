@@ -34,6 +34,13 @@ def play
 			letter = gets.chomp
 		end
 
+		# Check if letter was already inputted previously
+		letter_repeated = false
+		
+		while (letter_repeated) do
+
+		end
+
 
 		# Check for hit or miss
 		if (hit?(letter) == true)
