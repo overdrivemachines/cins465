@@ -36,7 +36,6 @@ def play
 
 		# Check if letter was already inputted previously
 		letter_repeated = true		
-		
 		while (letter_repeated) do
 			if ((letters_right.index(letter) != nil) || (letters_wrong.index(letter) != nil))
 				letter_repeated = true
@@ -47,7 +46,6 @@ def play
 			end
 		end
 
-
 		# Check for hit or miss
 		if (hit?(letter) == true)
 			letters_right << letter
@@ -56,9 +54,13 @@ def play
 			letters_wrong << letter
 			puts "Miss"
 		end
-		puts "Letters Right: " + letters_right.inspect.to_s
-		puts "Letters Wrong: " + letters_wrong.inspect.to_s
+		puts "Letters Right: " + letters_right.join("-")
+		puts "Letters Wrong: " + letters_wrong.join("-")
 		puts "# of words in Array = " + $words.size.to_s
+		if ($words.size <= 10)
+			puts $words.inspect
+		end
+		puts "---------------"
 	end
 
 	
@@ -77,16 +79,18 @@ def hit?(letter)
 		end
 	end
 
-	puts matches.to_s + " words contain the letter " + letter + ". Removing them.."
+	puts matches.to_s + " words contain the letter " + letter
 
 	if (matches == 1)
 		# Remove all words from the array that
 		# do not match
-		$words.each do |word|
-			if (rx.match(word) == nil)
-				$words.delete(word)
-			end
-		end
+		$words.keep_if { |word| word =~ rx }
+		# $words.each do |word|
+		# 	if (rx.match(word) == nil)
+		# 		$words.delete(word)
+		# 	end
+		# end
+		puts "Found target word: " + $words.inspect
 		return true
 	else
 		# Remove all the words from the array
@@ -101,7 +105,6 @@ def hit?(letter)
 				matches += 1
 			end
 		end
-		puts matches.to_s + " words contain the letter " + letter
 		return false
 	end
 end
