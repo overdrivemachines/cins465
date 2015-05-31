@@ -35,11 +35,16 @@ def play
 		end
 
 		# Check if letter was already inputted previously
-		letter_repeated = false
-		
+		letter_repeated = true		
 		
 		while (letter_repeated) do
-
+			if ((letters_right.index(letter) != nil) || (letters_wrong.index(letter) != nil))
+				letter_repeated = true
+				print "Enter your guess (do not enter previous guess): "
+				letter = gets.chomp
+			else
+				letter_repeated = false
+			end
 		end
 
 
