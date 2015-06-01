@@ -73,11 +73,7 @@ def hit?(letter)
 	# Check number of occurences of the letter in the array
 	matches = 0
 	rx = Regexp.new(letter)
-	$words.each do |word|
-		if (rx.match(word) != nil)
-			matches += 1
-		end
-	end
+	matches = $words.count { |word| word =~ rx }
 
 	puts matches.to_s + " words contain the letter " + letter
 
