@@ -19,6 +19,7 @@ def play
 	f = File.open("words")
 	f.each do |line|
 		if (line.size == $word_size + 1)
+			line.delete!("\n")
 			$words << line
 		end
 	end
