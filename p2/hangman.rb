@@ -11,8 +11,8 @@ $word_size = 5
 $words = Array.new
 
 def play
-	letters_right = Array.new
-	letters_wrong = Array.new
+	letters_entered = Array.new
+	chances = 10
 	
 	# Read the file and add only the words of the
 	# specified size into the array
@@ -24,7 +24,7 @@ def play
 		end
 	end
 
-	while (true) do
+	while (chances > 0) do
 
 		# Ask user to input their guess
 		print "Enter your guess: "
@@ -38,7 +38,7 @@ def play
 		# Check if letter was already inputted previously
 		letter_repeated = true		
 		while (letter_repeated) do
-			if ((letters_right.index(letter) != nil) || (letters_wrong.index(letter) != nil))
+			if (letters_entered.index(letter) != nil)
 				letter_repeated = true
 				print "Enter your guess (do not enter previous guess): "
 				letter = gets.chomp
@@ -47,24 +47,23 @@ def play
 			end
 		end
 
+		letters_entered << letter
+
 		# Check for hit or miss
 		if (hit?(letter) == true)
-			letters_right << letter
-			puts "Hit"
+			print "Hit "
 		else
-			letters_wrong << letter
-			puts "Miss"
+			print "Miss "
+			chances -= 1
 		end
-		puts "Letters Right: " + letters_right.join(", ")
-		puts "Letters Wrong: " + letters_wrong.join(", ")
-		puts "# of words in Array = " + $words.size.to_s
+		puts letters_entered.join(" ") + " (" + chances.to_s + " chances left)"
+		draw(letters_entered)
+		puts "[INFO]: # of words in Array = " + $words.size.to_s
 		if ($words.size <= 10)
-			puts $words.join(", ")
+			puts "[INFO]: $words = " + $words.join(", ")
 		end
-		puts "---------------"
-	end
-
-	
+		puts "------------------------------"
+	end	
 end
 
 # Returns true when letter matches with one of the letters of 
@@ -116,8 +115,21 @@ def hit?(letter)
 end
 
 
-def draw
-
+def draw(letters_entered)
+	if ($words.size > 1)
+		$word_size.times { print "_ " }
+	else
+		word = $words[0]
+		for i in 0..(word.size - 1)
+			c = word[i]
+			if (letters_entered.count(c) >= 1)
+				print c + " "
+			else
+				print "_ "
+			end
+		end
+	end
+	print "\n"
 end
 
 puts "+-------------+"
