@@ -55,11 +55,11 @@ def play
 			letters_wrong << letter
 			puts "Miss"
 		end
-		puts "Letters Right: " + letters_right.join("-")
-		puts "Letters Wrong: " + letters_wrong.join("-")
+		puts "Letters Right: " + letters_right.join(", ")
+		puts "Letters Wrong: " + letters_wrong.join(", ")
 		puts "# of words in Array = " + $words.size.to_s
 		if ($words.size <= 10)
-			puts $words.inspect
+			puts $words.join(", ")
 		end
 		puts "---------------"
 	end
@@ -76,7 +76,7 @@ def hit?(letter)
 	rx = Regexp.new(letter)
 	matches = $words.count { |word| word =~ rx }
 
-	puts matches.to_s + " words contain the letter " + letter
+	# puts matches.to_s + " words contain the letter " + letter
 
 	if (matches == 1)
 		# Remove all words from the array that
@@ -88,6 +88,15 @@ def hit?(letter)
 		# 	end
 		# end
 		puts "Found target word: " + $words.inspect
+		return true
+	elsif (matches == $words.size)
+		rindex = rand($words.size)
+		puts "Random index = " + rindex.to_s
+		word = $words[rindex]
+		puts "Selected word = " + word
+		$words.clear
+		$words << word
+		puts "$words = " + $words.to_s
 		return true
 	else
 		# Remove all the words from the array
