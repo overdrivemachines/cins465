@@ -10,7 +10,9 @@
 				<li class="user-entered-word"><%= text_field_tag(:word2) %></li>
 				<li><%= @end_word %></li>
 			</ul>
-			<%= submit_tag("ENTER") %>
+			<%= hidden_field_tag("start_word", @start_word) %>
+			<%= hidden_field_tag("end_word", @end_word) %>
+			<%= submit_tag("ENTER", class: "btn") %>
 		</div>
 	<% end %>
 </div>
