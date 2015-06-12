@@ -29,10 +29,10 @@ body {
 }
 #page {
 	width: 480px;
-	margin: 10px auto;
+	margin: 20px auto;
+	background-color: #403c3b;
 }
 header, #main {
-	background-color: #403c3b;
 	margin: 0 auto 0 auto;
 }
 header {
@@ -44,4 +44,21 @@ header h1 {
 	font-size: 24px;
 	text-transform: uppercase;
 	letter-spacing: .2em;
+	text-align: center;
+}
+#word-list {
+	background-color: #584f4d;
+}
+#word-list li {
+	background-color: #ec8b68;
+	color: #fff;
+	border-top: 1px solid #fe9772;
+	border-bottom: 1px solid #9f593f;
+	font-size: 24px;
+	letter-spacing: .05em;
+	list-style-type: none;
+	text-shadow: 2px 2px 1px #9f593f;
+	height: 50px;
+	padding-left: 1em;
+	padding-top: 10px;
 }
