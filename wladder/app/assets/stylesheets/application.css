@@ -48,6 +48,9 @@ header h1 {
 }
 #word-list {
 	background-color: #584f4d;
+	/*width: 175px;*/
+	text-align: center;
+	/*margin: 0 auto;*/
 }
 #word-list li {
 	background-color: #ec8b68;
@@ -59,6 +62,13 @@ header h1 {
 	list-style-type: none;
 	text-shadow: 2px 2px 1px #9f593f;
 	height: 50px;
-	padding-left: 1em;
+	/*padding-left: 1em;*/
 	padding-top: 10px;
+}
+#word-list li.user-entered-word {
+	background-color: #d7666b;
+	color: #fff;
+	text-shadow: 2px 2px 1px #914141;
+	border-top: 1px solid #e99295;
+	border-bottom: 1px solid #914141;
 }
