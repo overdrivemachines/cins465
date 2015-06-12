@@ -2,10 +2,15 @@
 	<header>
 		<h1>Wladder Game</h1>
 	</header>
-	<div id="main">
-		<ul id="word-list">
-			<li><%= @start_word %></li>
-			<li><%= @end_word %></li>
-		</ul>
-	</div>
+	<%= form_tag(result_path, method: "get") do %>
+		<div id="main">
+			<ul id="word-list">
+				<li><%= @start_word %></li>
+				<li class="user-entered-word"><%= text_field_tag(:word1) %></li>
+				<li class="user-entered-word"><%= text_field_tag(:word2) %></li>
+				<li><%= @end_word %></li>
+			</ul>
+			<%= submit_tag("ENTER") %>
+		</div>
+	<% end %>
 </div>
