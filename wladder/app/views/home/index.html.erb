@@ -9,8 +9,11 @@
 		<div id="main">
 			<ul id="word-list">
 				<li><%= @start_word %></li>
-				<li class="user-entered-word"><%= text_field_tag(:word1, nil, placeholder: 'word 1') %></li>
-				<li class="user-entered-word"><%= text_field_tag(:word2, nil, placeholder: 'word 2') %></li>
+				<li class="user-entered-word"><%= text_field_tag(:word1, nil, placeholder: 'word 1', autocomplete: 'off') %></li>
+				<li class="user-entered-word"><%= text_field_tag(:word2, nil, placeholder: 'word 2', autocomplete: 'off') %></li>
+				<li class="user-entered-word"><%= text_field_tag(:word3, nil, placeholder: 'word 3', autocomplete: 'off') %></li>
+				<li class="user-entered-word"><%= text_field_tag(:word4, nil, placeholder: 'word 4', autocomplete: 'off') %></li>
+				<li class="user-entered-word"><%= text_field_tag(:word5, nil, placeholder: 'word 5', autocomplete: 'off') %></li>
 				<li><%= @end_word %></li>
 			</ul>
 			<%= hidden_field_tag("start_word", @start_word) %>
