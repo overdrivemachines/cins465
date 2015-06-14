@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-@import url(http://fonts.googleapis.com/css?family=Oswald);
+ @import url(http://fonts.googleapis.com/css?family=Oswald);
+ @import url(http://fonts.googleapis.com/css?family=PT+Mono);
 
 html {
 	box-sizing: border-box;
@@ -26,18 +27,19 @@ body {
 	background: #000;
 	font-family: 'Oswald', 'Futura', sans-serif;
 	color: #fff;
+	font-size: 16px;
 }
 #page {
-	width: 480px;
-	margin: 20px auto;
+	width: 30em;
+	margin: 1.7em auto;
 	background-color: #403c3b;
 }
 header, #main {
 	margin: 0 auto 0 auto;
 }
 header {
-	padding: 30px 10px;
-	height: 75px;
+/* padding: 1.875em 0; */
+	/* padding: 30px 20px 10px; */
 }
 header h1 {
 	color: #fff;
@@ -45,30 +47,84 @@ header h1 {
 	text-transform: uppercase;
 	letter-spacing: .2em;
 	text-align: center;
+	padding: 1.5em 0 0;
+}
+header p {
+	/* margin-top: 1em; */
+	font-family: 'PT Mono', 'Oswald', 'Futura', sans-serif;
+	margin-top: 0.7em;
+	padding: 1em 2em 1.75em 2em;
+	text-align: justify;
+	line-height: 1.5em;
+}
+#main {
+	text-align: center;
+	padding-bottom: 2em;
 }
 #word-list {
 	background-color: #584f4d;
-	/*width: 175px;*/
 	text-align: center;
-	/*margin: 0 auto;*/
 }
 #word-list li {
+	font-family: 'PT Mono', 'Oswald', 'Futura', sans-serif;
 	background-color: #ec8b68;
 	color: #fff;
-	border-top: 1px solid #fe9772;
-	border-bottom: 1px solid #9f593f;
+	/* border-top: 1px solid #fe9772; */
+	/* border-bottom: 1px solid #9f593f; */
+	/* border-top: 1px solid rgba(255,255,255,0.3); */
+	/* border-bottom: 1px solid rgba(255,255,255,0.3); */
 	font-size: 24px;
 	letter-spacing: .05em;
 	list-style-type: none;
-	text-shadow: 2px 2px 1px #9f593f;
-	height: 50px;
+	/* text-shadow: 2px 2px 1px #9f593f; */
+padding: 10px 0 15px 0;
+	/* height: 50px; */
 	/*padding-left: 1em;*/
-	padding-top: 10px;
+	/* padding: 10px; */
 }
 #word-list li.user-entered-word {
 	background-color: #d7666b;
 	color: #fff;
 	text-shadow: 2px 2px 1px #914141;
-	border-top: 1px solid #e99295;
-	border-bottom: 1px solid #914141;
+	/* border-top: 1px solid #e99295; */
+	/* border-bottom: 1px solid #914141; */
+}
+input[type=text] {
+	font-family: 'PT Mono', 'Oswald', 'Futura', sans-serif;
+	font-size: 24px;
+	letter-spacing: .05em;
+	width: 100px;
+	border: none;
+	border-bottom: 3px solid white;
+	background: none;
+	/* background-color: rgba(0,0,0,0.1); */
+	/* border-radius: 3px; */
+	text-align: center;
+	color: white;
+}
+input[type=text]::-webkit-input-placeholder {
+	color: rgba(255,255,255,.4);
+}
+input[type=text]::-moz-placeholder {
+	color: rgba(255,255,255,.4);
+}
+input[type=text]:-moz-placeholder {   /* Older versions of Firefox */
+	color: rgba(255,255,255,.4);
+}
+input[type=text]:-ms-input-placeholder { 
+	color: rgba(255,255,255,.4);
+}
+input[type=text]:focus {
+	outline: 0;
+}
+.btn {
+	border: 3px solid #fff;
+	color: #fff;
+	background: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 1em 2em;
+	letter-spacing: 1px;
+	margin: 20px 0 0 0;
+	cursor: pointer;
 }
