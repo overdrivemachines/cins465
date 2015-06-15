@@ -15,12 +15,5 @@ class HomeController < ApplicationController
 		word3 = params[:word3]
 		word4 = params[:word4]
 		word5 = params[:word5]
-
-		@res = false
-		if (edit_distance_of_one(start_word, word1))
-			@res = true
-		else
-			@res = false
-		end
 	end
 end
