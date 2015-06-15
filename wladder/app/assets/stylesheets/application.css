@@ -49,6 +49,19 @@ header h1 {
 	text-align: center;
 	padding: 1.5em 0 0;
 }
+header h2 {
+	padding: 1em;
+	text-align: center;
+	font-size: 1.5em;
+	margin: 1.5em 0;
+	text-transform: uppercase;  
+}
+header h2.won {
+	background: green;
+}
+header h2.lost {
+	background: red;
+}
 header p {
 	/* margin-top: 1em; */
 	font-family: 'PT Mono', 'Oswald', 'Futura', sans-serif;
@@ -82,7 +95,7 @@ padding: 10px 0 15px 0;
 	/*padding-left: 1em;*/
 	/* padding: 10px; */
 }
-#word-list li.user-entered-word {
+#word-list li.user-entered-word:hover {
 	background-color: #d7666b;
 	color: #fff;
 	text-shadow: 2px 2px 1px #914141;
@@ -127,4 +140,8 @@ input[type=text]:focus {
 	letter-spacing: 1px;
 	margin: 20px 0 0 0;
 	cursor: pointer;
+}
+.btn:hover {
+  background: white;
+  color: #403c3b;
 }
