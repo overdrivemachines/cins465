@@ -1,3 +1,11 @@
+<header>
+	<h1>Wladder Game</h1>
+	<% if (@won_game) %>
+		<h2 class="won">YOU WON</h2>
+	<% else %>
+		<h2 class="lost">YOU LOST</h2>
+	<% end %>
+</header>
 <div id="main">
 	<ul id="word-list">
 		<% @words.each do |word| %>
