@@ -1,24 +1,16 @@
-<div id="page">
-	<header>
-		<h1>Wladder Game</h1>
-		<p>
-			In order to win the game, you must change the start word into the end word progressively, creating an existing word at each step. Each step consists of a single letter substitution.
-		</p>
-	</header>
-	<%= form_tag(result_path, method: "get") do %>
-		<div id="main">
-			<ul id="word-list">
-				<li><%= @start_word %></li>
-				<li class="user-entered-word"><%= text_field_tag(:word1, nil, placeholder: 'word 1', autocomplete: 'off', maxlength: @start_word.size) %></li>
-				<li class="user-entered-word"><%= text_field_tag(:word2, nil, placeholder: 'word 2', autocomplete: 'off', maxlength: @start_word.size) %></li>
-				<li class="user-entered-word"><%= text_field_tag(:word3, nil, placeholder: 'word 3', autocomplete: 'off', maxlength: @start_word.size) %></li>
-				<li class="user-entered-word"><%= text_field_tag(:word4, nil, placeholder: 'word 4', autocomplete: 'off', maxlength: @start_word.size) %></li>
-				<li class="user-entered-word"><%= text_field_tag(:word5, nil, placeholder: 'word 5', autocomplete: 'off', maxlength: @start_word.size) %></li>
-				<li><%= @end_word %></li>
-			</ul>
-			<%= hidden_field_tag("start_word", @start_word) %>
-			<%= hidden_field_tag("end_word", @end_word) %>
-			<%= submit_tag("ENTER", class: "btn") %>
-		</div>
-	<% end %>
-</div>
+<%= form_tag(result_path, method: "get") do %>
+	<div id="main">
+		<ul id="word-list">
+			<li><%= @start_word %></li>
+			<li class="user-entered-word"><%= text_field_tag(:word1, nil, placeholder: 'word 1', autocomplete: 'off', maxlength: @start_word.size) %></li>
+			<li class="user-entered-word"><%= text_field_tag(:word2, nil, placeholder: 'word 2', autocomplete: 'off', maxlength: @start_word.size) %></li>
+			<li class="user-entered-word"><%= text_field_tag(:word3, nil, placeholder: 'word 3', autocomplete: 'off', maxlength: @start_word.size) %></li>
+			<li class="user-entered-word"><%= text_field_tag(:word4, nil, placeholder: 'word 4', autocomplete: 'off', maxlength: @start_word.size) %></li>
+			<li class="user-entered-word"><%= text_field_tag(:word5, nil, placeholder: 'word 5', autocomplete: 'off', maxlength: @start_word.size) %></li>
+			<li><%= @end_word %></li>
+		</ul>
+		<%= hidden_field_tag("start_word", @start_word) %>
+		<%= hidden_field_tag("end_word", @end_word) %>
+		<%= submit_tag("ENTER", class: "btn") %>
+	</div>
+<% end %>
