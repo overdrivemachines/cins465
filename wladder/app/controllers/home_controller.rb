@@ -8,12 +8,14 @@ class HomeController < ApplicationController
 	end
 
 	def result
-		start_word = params[:start_word]
-		end_word = params[:end_word]
-		word1 = params[:word1]
-		word2 = params[:word2]
-		word3 = params[:word3]
-		word4 = params[:word4]
-		word5 = params[:word5]
+		@words = Array.new
+		@words[0] = params[:start_word]		
+		@words[1] = params[:word1]
+		@words[2] = params[:word2]
+		@words[3] = params[:word3]
+		@words[4] = params[:word4]
+		@words[5] = params[:word5]
+		@words[6] = params[:end_word]
+		@words.delete_if { |word| word == "" }
 	end
 end
