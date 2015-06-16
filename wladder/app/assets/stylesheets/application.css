@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
- @import url(http://fonts.googleapis.com/css?family=Oswald);
- @import url(http://fonts.googleapis.com/css?family=PT+Mono);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=PT+Mono);
 
 html {
 	box-sizing: border-box;
@@ -38,7 +38,7 @@ header, #main {
 	margin: 0 auto 0 auto;
 }
 header {
-/* padding: 1.875em 0; */
+	/* padding: 1.875em 0; */
 	/* padding: 30px 20px 10px; */
 }
 header h1 {
@@ -90,12 +90,12 @@ header p {
 	letter-spacing: .05em;
 	list-style-type: none;
 	/* text-shadow: 2px 2px 1px #9f593f; */
-padding: 10px 0 15px 0;
+	padding: 10px 0 15px 0;
 	/* height: 50px; */
 	/*padding-left: 1em;*/
 	/* padding: 10px; */
 }
-#word-list li.user-entered-word:hover {
+#word-list li.user-entered-word {
 	background-color: #d7666b;
 	color: #fff;
 	text-shadow: 2px 2px 1px #914141;
@@ -131,6 +131,9 @@ input[type=text]:focus {
 	outline: 0;
 }
 .btn {
+	font-family: 'Oswald', 'Futura', sans-serif;
+	font-size: 16px;
+	text-decoration: none;
 	border: 3px solid #fff;
 	color: #fff;
 	background: none;
@@ -138,10 +141,11 @@ input[type=text]:focus {
 	font-weight: bold;
 	padding: 1em 2em;
 	letter-spacing: 1px;
-	margin: 20px 0 0 0;
+	margin: 3em 0 0 0;
 	cursor: pointer;
+	display: inline-block;
 }
 .btn:hover {
-  background: white;
-  color: #403c3b;
+	background: white;
+	color: #403c3b;
 }
