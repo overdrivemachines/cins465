@@ -43,3 +43,23 @@ def legal steps
 	return true
 
 end
+
+# return an array which is the legal "ladder" progression from the 
+# first word to the last word
+# References:
+# 	-	http://www.cs.cmu.edu/~adamchik/15-121/labs/HW-4%20Word%20Ladder/lab.html
+# 	-	http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1134/handouts/15-Assignment2.pdf
+# 	
+def solution(first_word, last_word)
+	queue = Array.new
+
+	for i in 0..(first_word.size - 1)
+		rx_string = String.new(first_word)
+		rx_string[i] = "."
+		puts "Matching " + rx_string
+		rx = Regexp.new(rx_string)
+		print dictionary.select { |v| v =~ rx }
+		puts ""
+		puts "---------------"
+	end
+end
