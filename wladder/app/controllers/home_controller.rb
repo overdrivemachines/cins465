@@ -16,6 +16,13 @@ class HomeController < ApplicationController
 		@words[4] = params[:word4]
 		@words[5] = params[:word5]
 		@words[6] = params[:end_word]
+		# Remove blank words
 		@words.delete_if { |word| word == "" }
+		@won_game = legal(@words)
+
+		# Find the correct solution
+		@correct_words = Array.new
+		@correct_words = solution(@words.first, @word.last)
+
 	end
 end
