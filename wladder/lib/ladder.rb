@@ -51,15 +51,34 @@ end
 # 	-	http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1134/handouts/15-Assignment2.pdf
 # 	
 def solution(first_word, last_word)
+	my_dictionary = Array.new(dictionary)
 	queue = Array.new
+	# Remove the first word from the dictionary
+	my_dictionary.delete(first_word)
 
+	# Find all the words one letter different from the first word
+	one_letter_diff_words = Array.new
 	for i in 0..(first_word.size - 1)
 		rx_string = String.new(first_word)
 		rx_string[i] = "."
-		puts "Matching " + rx_string
+		puts "INFO: Matching " + rx_string
 		rx = Regexp.new(rx_string)
-		print dictionary.select { |v| v =~ rx }
-		puts ""
+		matching_words = Array.new(my_dictionary.select { |v| v =~ rx })
+		puts "INFO: " + matching_words.inspect
+
+		one_letter_diff_words = one_letter_diff_words + matching_words
+
+		matching_words.each do |word|
+			# stack = Array.new
+			# stack.unshift(first_word)
+			# stack.unshift(word)
+		end
 		puts "---------------"
 	end
+
+	one_letter_diff_words.uniq!
+	puts "INFO: Size of array: " + one_letter_diff_words.size.to_s
+	puts "INFO: " + one_letter_diff_words.inspect
+
+
 end
