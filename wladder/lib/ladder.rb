@@ -80,5 +80,18 @@ def solution(first_word, last_word)
 	puts "INFO: Size of array: " + one_letter_diff_words.size.to_s
 	puts "INFO: " + one_letter_diff_words.inspect
 
+	# Remove words from the dictionary
+	my_dictionary = my_dictionary - one_letter_diff_words
+
+	# Create stacks and insert them in the queue
+	one_letter_diff_words.each do |word|
+		stack = Array.new
+		stack.unshift(first_word)
+		stack.unshift(word)
+		queue.push(stack)
+	end
+
+	puts "INFO: Queue size = " + queue.size.to_s
+	puts "INFO: Queue Contents: " + queue.inspect()
 
 end
