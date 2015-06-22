@@ -57,7 +57,6 @@ end
 def solution(first_word, last_word)
 	queue = Array.new
 	# Remove the first word from the dictionary
-	puts "*** my_dictionary.class = " + $my_dictionary.class.to_s
 	$my_dictionary.delete(first_word)
 
 	# Find all the words one letter different from the first word
