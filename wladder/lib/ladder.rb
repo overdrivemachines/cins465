@@ -12,7 +12,7 @@ load "#{Rails.root}/lib/words4.rb"
 # load the dictionary of 5-letter words
 #load "#{Rails.root}/lib/words5.rb"
 
-@my_dictionary = Array.new(dictionary)
+$my_dictionary = Array.new(dictionary)
 
 # return true if the two strings differ by only one letter
 def edit_distance_of_one word1, word2
@@ -57,7 +57,8 @@ end
 def solution(first_word, last_word)
 	queue = Array.new
 	# Remove the first word from the dictionary
-	@my_dictionary.delete(first_word)
+	puts "*** my_dictionary.class = " + $my_dictionary.class.to_s
+	$my_dictionary.delete(first_word)
 
 	# Find all the words one letter different from the first word
 	one_letter_diff_words = similar_words(first_word)
@@ -136,7 +137,7 @@ end
 def similar_words(word)
 	sw = Array.new
 	# Remove word from the dictionary so that it is not in the result
-	@my_dictionary.delete(word)
+	$my_dictionary.delete(word)
 	
 	# Iterate through every letter to have different regular expressions
 	# Eg: For the word pong, we can have the regular expressions:
@@ -155,11 +156,11 @@ def similar_words(word)
 		rx = Regexp.new(rx_string)
 
 		# Find words that match the regular expression
-		matching_words = Array.new(@my_dictionary.select { |v| v =~ rx })
+		matching_words = Array.new($my_dictionary.select { |v| v =~ rx })
 		# puts "INFO: " + matching_words.inspect
 
 		# Remove the matching words from the dictionary so they are not repeated
-		@my_dictionary = @my_dictionary - matching_words
+		$my_dictionary = $my_dictionary - matching_words
 
 		# Put the words that match in the array
 		sw = sw + matching_words
