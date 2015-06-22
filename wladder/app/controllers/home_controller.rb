@@ -22,7 +22,7 @@ class HomeController < ApplicationController
 
 		# Find the correct solution
 		@correct_words = Array.new
-		@correct_words = solution(@words.first, @word.last)
+		@correct_words = solution(@words.first, @words.last)
 
 	end
 end
