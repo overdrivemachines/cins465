@@ -12,6 +12,8 @@ load "#{Rails.root}/lib/words4.rb"
 # load the dictionary of 5-letter words
 #load "#{Rails.root}/lib/words5.rb"
 
+@my_dictionary = Array.new(dictionary)
+
 # return true if the two strings differ by only one letter
 def edit_distance_of_one word1, word2
 
@@ -51,10 +53,10 @@ end
 # 	-	http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1134/handouts/15-Assignment2.pdf
 # 	
 def solution(first_word, last_word)
-	my_dictionary = Array.new(dictionary)
+	# my_dictionary = Array.new(dictionary)
 	queue = Array.new
 	# Remove the first word from the dictionary
-	my_dictionary.delete(first_word)
+	@my_dictionary.delete(first_word)
 
 	# Find all the words one letter different from the first word
 	one_letter_diff_words = Array.new
@@ -63,7 +65,7 @@ def solution(first_word, last_word)
 		rx_string[i] = "."
 		puts "INFO: Matching " + rx_string
 		rx = Regexp.new(rx_string)
-		matching_words = Array.new(my_dictionary.select { |v| v =~ rx })
+		matching_words = Array.new(@my_dictionary.select { |v| v =~ rx })
 		puts "INFO: " + matching_words.inspect
 
 		one_letter_diff_words = one_letter_diff_words + matching_words
@@ -81,7 +83,7 @@ def solution(first_word, last_word)
 	puts "INFO: " + one_letter_diff_words.inspect
 
 	# Remove words from the dictionary
-	my_dictionary = my_dictionary - one_letter_diff_words
+	@my_dictionary = @my_dictionary - one_letter_diff_words
 
 	# Create stacks and insert them in the queue
 	one_letter_diff_words.each do |word|
@@ -94,4 +96,68 @@ def solution(first_word, last_word)
 	puts "INFO: Queue size = " + queue.size.to_s
 	puts "INFO: Queue Contents: " + queue.inspect()
 
+	# Inspect every stack in the queue and add new stacks
+	found_stack = false
+	queue_has_items = true
+	stack = Array.new
+	while ((found_stack == false) && (queue_has_items == true))
+		# Dequeue the front
+		stack = queue.shift
+		puts "STACK: " + stack.inspect
+		if (stack[0] == last_word)
+			found_stack = true
+		else
+			# find all words one letter different from the top word
+			
+		end
+
+		# Check if queue is empty
+		if (queue.size == 0)
+			queue_has_items = false
+		end
+	end
+
+	if (found_stack == true)
+		puts stack.inspect
+	else
+		if (queue_has_items == false)
+			puts "No solution exists"
+		end
+	end
+end
+
+# Returns all the words one letter different from given word
+def similar_words(word)
+	sw = Array.new
+	# Remove word from the dictionary so that it is not in the result
+	@my_dictionary.delete(word)
+	
+	# Iterate through every letter to have different regular expressions
+	# Eg: For the word pong, we can have the regular expressions:
+	# 		.ong
+	# 		p.ng
+	# 		po.g
+	# 		pon.
+	for i in 0..(word.size - 1)
+		rx_string = String.new(word)
+
+		# Replace the letter with .
+		rx_string[i] = "."
+		puts "INFO: Matching " + rx_string
+
+		# Create the regular expression
+		rx = Regexp.new(rx_string)
+
+		# Find words that match the regular expression
+		matching_words = Array.new(@my_dictionary.select { |v| v =~ rx })
+		puts "INFO: " + matching_words.inspect
+
+		# Remove the matching words from the dictionary so they are not repeated
+		@my_dictionary = @my_dictionary - matching_words
+
+		# Put the words that match in the array
+		sw = sw + matching_words
+	end
+
+	return sw
 end
