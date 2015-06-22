@@ -48,6 +48,8 @@ end
 
 # return an array which is the legal "ladder" progression from the 
 # first word to the last word
+# Eg: solution("pong", "dark")
+# 		["dark", "dank", "dang", "dong", "pong"]
 # References:
 # 	-	http://www.cs.cmu.edu/~adamchik/15-121/labs/HW-4%20Word%20Ladder/lab.html
 # 	-	http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1134/handouts/15-Assignment2.pdf
@@ -89,13 +91,16 @@ def solution(first_word, last_word)
 		else
 			# find all words one letter different from 
 			# the word on top of the stack
-			one_letter_diff_words = similar_words(top_of_stack)
+			# puts "INFO: Stack: " + stack.inspect
+			one_letter_diff_words = Array.new(similar_words(top_of_stack))
+			# puts "INFO: similar_words: " + one_letter_diff_words.inspect
+			# puts "-------------------"
 
 			# Create stacks and insert them in the queue
 			one_letter_diff_words.each do |word|
 				new_stack = Array.new(stack)
-				stack.unshift(word)
-				queue.push(stack)
+				new_stack.unshift(word)
+				queue.push(new_stack)
 			end
 		end
 
@@ -106,7 +111,7 @@ def solution(first_word, last_word)
 	end
 
 	if (found_stack == true)
-		puts "FOUND STACK!!!"
+		puts "FOUND STACK!!! Queue Size = " + queue.size.to_s + " Stack Size = " + stack.size.to_s
 		puts stack.inspect
 	else
 		if (queue_has_items == false)
