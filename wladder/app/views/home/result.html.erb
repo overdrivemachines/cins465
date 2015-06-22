@@ -8,7 +8,11 @@
 </header>
 <div id="main">
 	<ul id="word-list">
+		your solution is:
 		<% @words.each do |word| %>
+			<li><%= word %></li>
+		<% end %>
+		<% @correct_words.each do |word| %>
 			<li><%= word %></li>
 		<% end %>
 	</ul>
