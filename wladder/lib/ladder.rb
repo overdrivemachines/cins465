@@ -59,31 +59,9 @@ def solution(first_word, last_word)
 	@my_dictionary.delete(first_word)
 
 	# Find all the words one letter different from the first word
-	one_letter_diff_words = Array.new
-	for i in 0..(first_word.size - 1)
-		rx_string = String.new(first_word)
-		rx_string[i] = "."
-		puts "INFO: Matching " + rx_string
-		rx = Regexp.new(rx_string)
-		matching_words = Array.new(@my_dictionary.select { |v| v =~ rx })
-		puts "INFO: " + matching_words.inspect
-
-		one_letter_diff_words = one_letter_diff_words + matching_words
-
-		matching_words.each do |word|
-			# stack = Array.new
-			# stack.unshift(first_word)
-			# stack.unshift(word)
-		end
-		puts "---------------"
-	end
-
-	one_letter_diff_words.uniq!
-	puts "INFO: Size of array: " + one_letter_diff_words.size.to_s
-	puts "INFO: " + one_letter_diff_words.inspect
-
-	# Remove words from the dictionary
-	@my_dictionary = @my_dictionary - one_letter_diff_words
+	one_letter_diff_words = similar_words(first_word)
+	# puts "INFO: Size of array: " + one_letter_diff_words.size.to_s
+	# puts "INFO: " + one_letter_diff_words.inspect
 
 	# Create stacks and insert them in the queue
 	one_letter_diff_words.each do |word|
@@ -93,22 +71,32 @@ def solution(first_word, last_word)
 		queue.push(stack)
 	end
 
-	puts "INFO: Queue size = " + queue.size.to_s
-	puts "INFO: Queue Contents: " + queue.inspect()
+	# puts "INFO: Queue size = " + queue.size.to_s
+	# puts "INFO: Queue Contents: " + queue.inspect()
 
 	# Inspect every stack in the queue and add new stacks
 	found_stack = false
 	queue_has_items = true
-	stack = Array.new
+	# stack = Array.new
 	while ((found_stack == false) && (queue_has_items == true))
 		# Dequeue the front
 		stack = queue.shift
-		puts "STACK: " + stack.inspect
-		if (stack[0] == last_word)
+		
+		# Check if the top of the stack matches the last word
+		top_of_stack = String.new(stack[0])
+		if (top_of_stack == last_word)
 			found_stack = true
 		else
-			# find all words one letter different from the top word
-			
+			# find all words one letter different from 
+			# the word on top of the stack
+			one_letter_diff_words = similar_words(top_of_stack)
+
+			# Create stacks and insert them in the queue
+			one_letter_diff_words.each do |word|
+				new_stack = Array.new(stack)
+				stack.unshift(word)
+				queue.push(stack)
+			end
 		end
 
 		# Check if queue is empty
@@ -118,6 +106,7 @@ def solution(first_word, last_word)
 	end
 
 	if (found_stack == true)
+		puts "FOUND STACK!!!"
 		puts stack.inspect
 	else
 		if (queue_has_items == false)
@@ -143,14 +132,14 @@ def similar_words(word)
 
 		# Replace the letter with .
 		rx_string[i] = "."
-		puts "INFO: Matching " + rx_string
+		# puts "INFO: Matching " + rx_string
 
 		# Create the regular expression
 		rx = Regexp.new(rx_string)
 
 		# Find words that match the regular expression
 		matching_words = Array.new(@my_dictionary.select { |v| v =~ rx })
-		puts "INFO: " + matching_words.inspect
+		# puts "INFO: " + matching_words.inspect
 
 		# Remove the matching words from the dictionary so they are not repeated
 		@my_dictionary = @my_dictionary - matching_words
