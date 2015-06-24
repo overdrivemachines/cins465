@@ -6,15 +6,22 @@
 		<h2 class="lost">YOU LOST</h2>
 	<% end %>
 </header>
-<div id="main">
-	<ul id="word-list">
-		your solution is:
+<h3>Your Answer</h3>
+<div class="main">
+	<ul class="word-list">
 		<% @words.each do |word| %>
 			<li><%= word %></li>
 		<% end %>
-		<% @correct_words.each do |word| %>
-			<li><%= word %></li>
-		<% end %>
 	</ul>
-	<%= link_to("Play Again", root_path, class: 'btn') %>
 </div>
+<% if (@won_game == false) %>
+	<h3>Correct Answer</h3>
+	<div class="main">
+		<ul class="word-list">
+			<% @correct_words.each do |word| %>
+				<li><%= word %></li>
+			<% end %>
+		</ul>
+		<%= link_to("Play Again", root_path, class: 'btn') %>
+	</div>
+<% end %>
