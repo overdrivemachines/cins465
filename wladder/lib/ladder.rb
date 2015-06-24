@@ -55,6 +55,7 @@ end
 # 	-	http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1134/handouts/15-Assignment2.pdf
 # 	
 def solution(first_word, last_word)
+	$my_dictionary = Array.new(dictionary)
 	queue = Array.new
 	# Remove the first word from the dictionary
 	$my_dictionary.delete(first_word)
@@ -79,6 +80,7 @@ def solution(first_word, last_word)
 	# Inspect every stack in the queue and add new stacks
 	found_stack = false
 	queue_has_items = true
+	iteration = 0
 	# stack = Array.new
 	while ((found_stack == false) && (queue_has_items == true))
 		# Dequeue the front
@@ -114,6 +116,8 @@ def solution(first_word, last_word)
 		if (queue.size == 0)
 			queue_has_items = false
 		end
+
+		iteration += 1
 	end
 
 	# Reverse the order of the stack
@@ -125,6 +129,7 @@ def solution(first_word, last_word)
 	else
 		if (queue_has_items == false)
 			puts "No solution exists"
+			stack = Array.new
 		end
 	end
 
