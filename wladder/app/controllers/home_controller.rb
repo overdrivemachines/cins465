@@ -20,9 +20,14 @@ class HomeController < ApplicationController
 		@words.delete_if { |word| word == "" }
 		@won_game = legal(@words)
 
-		# Find the correct solution
 		@correct_words = Array.new
-		@correct_words = solution(@words.first, @words.last)
-
+		@solution_exists = true
+		if (@won_game == false)
+			# Find the correct solution
+			@correct_words = solution(@words.first, @words.last)
+			if (@correct_words.size == 0)
+				@solution_exists = false
+			end
+		end
 	end
 end
