@@ -5,8 +5,8 @@
 	</p>
 </header>
 <%= form_tag(result_path, method: "get") do %>
-	<div id="main">
-		<ul id="word-list">
+	<div class="main">
+		<ul class="word-list">
 			<li><%= @start_word %></li>
 			<li class="user-entered-word"><%= text_field_tag(:word1, nil, placeholder: 'word 1', autocomplete: 'off', maxlength: @start_word.size) %></li>
 			<li class="user-entered-word"><%= text_field_tag(:word2, nil, placeholder: 'word 2', autocomplete: 'off', maxlength: @start_word.size) %></li>
