@@ -27,7 +27,7 @@ body {
 	background: #000;
 	font-family: 'Oswald', 'Futura', sans-serif;
 	color: #fff;
-	font-size: 16px;
+	font-size: 11px;
 }
 #page {
 	width: 30em;
@@ -54,7 +54,7 @@ header h2 {
 	padding: 1em;
 	text-align: center;
 	font-size: 1.5em;
-	margin: 1.5em 0;
+	/*margin: 1.5em 0;*/
 	text-transform: uppercase;  
 }
 header h2.won {
@@ -133,7 +133,7 @@ input[type=text]:focus {
 	font-family: 'Oswald', 'Futura', sans-serif;
 	font-size: 1em;
 	text-decoration: none;
-	border: 3px solid #fff;
+	border: 0.1875em solid #fff;
 	color: #fff;
 	background: none;
 	text-transform: uppercase;
