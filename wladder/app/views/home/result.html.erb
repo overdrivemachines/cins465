@@ -1,21 +1,29 @@
 <header>
 	<h1>Wladder Game</h1>
-	<% if (@won_game) %>
-		<h2 class="won">YOU WON</h2>
-	<% else %>
-		<h2 class="lost">YOU LOST</h2>
+	<% if (@solution_exists) %>
+		<% if (@won_game) %>
+			<h2 class="won">YOU WON</h2>
+		<% else %>
+			<h2 class="lost">YOU LOST</h2>
+		<% end %>
 	<% end %>
 </header>
-<h3>Your Answer</h3>
+<% if (@solution_exists == false) %>
+	<h3>No solution exists</h3>
+<% else %>
+	<h3>Your Answer</h3>
+<% end %>
 <div class="main">
 	<ul class="word-list">
 		<% @words.each do |word| %>
 			<li><%= word %></li>
 		<% end %>
 	</ul>
-	<%= link_to("Play Again", root_path, class: 'btn') %>
+	<% if ((@won_game == true) || (@solution_exists == false)) %>
+		<%= link_to("Play Again", root_path, class: 'btn') %>
+	<% end %>
 </div>
-<% if (@won_game == false) %>
+<% if ((@won_game == false) && (@solution_exists == true)) %>
 	<h3>Correct Answer</h3>
 	<div class="main">
 		<ul class="word-list">
