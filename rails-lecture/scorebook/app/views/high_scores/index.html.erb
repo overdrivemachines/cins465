@@ -1,0 +1,21 @@
+<h1>Listing High Scores</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>User</th>
+			<th>Game</th>
+			<th>Score</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @high_scores.each do |hs| %>
+			<tr>
+				<td><%= hs.user %></td>
+				<td><%= hs.game %></td>
+				<td><%= hs.score %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
