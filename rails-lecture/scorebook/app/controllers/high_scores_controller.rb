@@ -16,4 +16,15 @@ class HighScoresController < ApplicationController
 			render :new
 		end
 	end
+	def edit
+		@high_score = HighScore.find(params[:id])
+	end
+	def update
+		@high_score = HighScore.find(params[:id])
+		if (@high_score.update(params.require(:high_score).permit(:user, :game, :score)))
+			redirect_to @high_score, notice: 'High Score was updated successfully'
+		else
+			render :edit
+		end
+	end
 end
