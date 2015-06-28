@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 	get 'high_scores/:id' => 'high_scores#show', as: 'high_score'
 	get 'high_scores', to: 'high_scores#index', as: 'high_scores'
 
+	get 'high_scores/new' => 'high_scores#new', as: 'new_high_score'
+	post 'high_scores' => 'high_scores#create'
+
 	# Example of named route that can be invoked with purchase_url(id: product.id)
 	#   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
