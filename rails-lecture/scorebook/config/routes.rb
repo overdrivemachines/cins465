@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 	get 'high_scores/new' => 'high_scores#new', as: 'new_high_score'
 
 	# Edit an existing HighScore object
-	get 'high_scores/:id/edit' => 'high_scores#edit', as: 'high_score_edit'
+	get 'high_scores/:id/edit' => 'high_scores#edit', as: 'edit_high_score'
 
 	# Individual HighScore object
 	get 'high_scores/:id' => 'high_scores#show', as: 'high_score'
