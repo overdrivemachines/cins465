@@ -1,10 +1,17 @@
 class HighScoresController < ApplicationController
+	before_action :set_high_score, only: [:show, :edit, :update, :destroy]
+
+	def set_high_score
+		@high_score = HighScore.find(params[:id])
+	end
+
 	def index
 		@high_scores = HighScore.all
 	end
 
 	def show
-		@high_score = HighScore.find(params[:id])
+		# set_high_score
+		# @high_score = HighScore.find(params[:id])
 	end
 
 	def new
@@ -21,11 +28,13 @@ class HighScoresController < ApplicationController
 	end
 
 	def edit
-		@high_score = HighScore.find(params[:id])
+		# set_high_score
+		# @high_score = HighScore.find(params[:id])
 	end
 
 	def update
-		@high_score = HighScore.find(params[:id])
+		# set_high_score
+		# @high_score = HighScore.find(params[:id])
 		if @high_score.update(params.require(:high_score).permit(:user, :game, :score))
 			redirect_to @high_score, notice: "High Score was successfully updated."
 		else
@@ -34,7 +43,8 @@ class HighScoresController < ApplicationController
 	end
 
 	def destroy
-		@high_score = HighScore.find(params[:id])
+		# set_high_score
+		# @high_score = HighScore.find(params[:id])
 		@high_score.destroy
 		redirect_to high_scores_path, notice: "High Score was successfully destroyed."
 	end
