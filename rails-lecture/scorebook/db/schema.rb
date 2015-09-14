@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626211100) do
+ActiveRecord::Schema.define(version: 20150908030726) do
 
   create_table "high_scores", force: :cascade do |t|
     t.string  "user"

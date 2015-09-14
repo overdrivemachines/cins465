@@ -17,9 +17,10 @@
 				<td><%= hs.score %></td>
 				<td><%= link_to "Show", hs %></td>
 				<td><%= link_to "Edit", edit_high_score_path(hs) %></td>
+				<td><%= link_to "Destroy", hs, method: :delete, data: {confirm: "Are you sure you want to delete #{hs.user}'s score?"}  %></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<%= link_to "Add new High Score", new_high_score_path %>
+<%= link_to "New High Score", new_high_score_path %>
