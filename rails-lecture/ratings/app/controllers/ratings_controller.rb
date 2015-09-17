@@ -1,12 +1,6 @@
 class RatingsController < ApplicationController
 	before_action :set_rating, only: [:edit, :update, :destroy]
 
-	# GET /professors/:professor_id/ratings
-	def index
-		@professor = Professor.find(params[:professor_id])
-		@ratings = @professor.ratings
-	end
-
 	# GET /professors/:professor_id/ratings/new
 	def new
 		@professor = Professor.find(params[:professor_id])
@@ -23,7 +17,7 @@ class RatingsController < ApplicationController
 		@professor = Professor.find(params[:professor_id])
 		@rating = @professor.ratings.new(rating_params)
 		if @rating.save
-			redirect_to professor_ratings_url(@professor), notice: 'Rating was successfully created.'
+			redirect_to professor_url(@professor), notice: 'Rating was successfully created.'
 		else
 			render :new
 		end
@@ -33,7 +27,7 @@ class RatingsController < ApplicationController
 	# set_ratings called
 	def update
 		if @ratings.update(rating_params)
-			redirect_to professor_ratings_url(@professor), notice: 'Rating was successfully updated.'
+			redirect_to professor_url(@rating.professor), notice: 'Rating was successfully updated.'
 		else
 			render :edit
 		end
@@ -43,7 +37,7 @@ class RatingsController < ApplicationController
 	# set_ratings called
 	def destroy
 		@rating.destroy
-		redirect_to professor_ratings_url(@rating.professor), notice: 'Rating was successfully destroyed.'
+		redirect_to professor_url(@rating.professor), notice: 'Rating was successfully destroyed.'
 	end
 
 	private
