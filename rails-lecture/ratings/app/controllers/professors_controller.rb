@@ -6,6 +6,7 @@ class ProfessorsController < ApplicationController
 	end
 
 	def show
+		@rating = @professor.ratings.new
 	end
 
 	def new
