@@ -17,12 +17,24 @@ class ProfessorsController < ApplicationController
 
 	def create
 		@professor = Professor.new(professor_params)
+		if @professor.save
+			redirect_to @professor, notice: 'Professor was successfully created.'
+		else
+			render :new
+		end
 	end
 
 	def update
+		if @professor.update(professor_params)
+			redirect_to @professor, notice: 'Professor was successfully updated.'
+		else
+			render :edit
+		end
 	end
 
 	def destroy
+		@professor.destroy
+		redirect_to professors_url
 	end
 
 	private
