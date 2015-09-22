@@ -11,6 +11,7 @@ class ProfessorsController < ApplicationController
 
 	def new
 		@professor = Professor.new
+		@professor.ratings.new
 	end
 
 	def edit
