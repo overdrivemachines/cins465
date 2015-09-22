@@ -13,4 +13,8 @@
 
 class Rating < ActiveRecord::Base
   belongs_to :professor
+
+  validates :course, presence: true
+  validates :comment, presence: true
+  validates :rating, presence: true
 end
