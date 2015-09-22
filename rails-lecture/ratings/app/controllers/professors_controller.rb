@@ -45,6 +45,6 @@ class ProfessorsController < ApplicationController
 		end
 
 		def professor_params
-			 params.require(:professor).permit(:first, :last, :university)
+			 params.require(:professor).permit(:first, :last, :university, ratings_attributes: [:course, :comment, :rating])
 		end
 end
