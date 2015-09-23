@@ -5,6 +5,7 @@ class RatingsController < ApplicationController
 	def new
 		@professor = Professor.find(params[:professor_id])
 		@rating = @professor.ratings.new
+		@rating.user_id = current_user.id
 	end
 
 	# GET /ratings/1/edit
