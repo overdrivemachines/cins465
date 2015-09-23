@@ -19,8 +19,10 @@
           <td><%= rating.course %></td>
           <td><%= rating.comment %></td>
           <td><%= rating.rating %></td>
-          <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
-          <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if rating.user_id == current_user.id %>
+            <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+            <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     <% end %>
